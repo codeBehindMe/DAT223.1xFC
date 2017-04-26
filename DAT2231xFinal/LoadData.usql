@@ -1,0 +1,14 @@
+﻿// 4.1 Load the data into the stock table.
+USE DATABASE retail;
+@stock = EXTRACT id int,
+item string
+FROM "stock.txt"
+USING Extractors.Tsv();
+
+INSERT INTO sales.stock
+SELECT * FROM @stock;
+
+//// 5.1 Create a CSV of chocolate related products
+//@choco =
+//    EXTRACT id int, item string
+//            FROM stock.sales;
